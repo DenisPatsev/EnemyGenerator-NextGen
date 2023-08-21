@@ -7,13 +7,12 @@ public class Generator : MonoBehaviour
 
     private void Start()
     {
-        GenerateEnemy(gameObject);
+        CreateEnemy(gameObject);
     }
 
-    private void GenerateEnemy(GameObject gameObject)
+    private void CreateEnemy(GameObject gameObject)
     {
         var enemy = Instantiate(_generatedObject, gameObject.transform.position, Quaternion.identity);
-        enemy.gameObject.AddComponent<MotionToTarget>();
-        enemy.GetComponent<MotionToTarget>().target = _target;
+        enemy.gameObject.AddComponent<TargetFollower>().SetTarget(_target);
     }
 }
