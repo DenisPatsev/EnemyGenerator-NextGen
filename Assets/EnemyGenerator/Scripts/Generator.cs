@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
-    [SerializeField] private Enemy _generatedObject;
+    [SerializeField] private Enemy _prefab;
     [SerializeField] private Player _target;
 
     private void Start()
     {
-        CreateEnemy(gameObject);
+        SpawnEnemy(transform);
     }
 
-    private void CreateEnemy(GameObject gameObject)
+    private void SpawnEnemy(Transform position)
     {
-        var enemy = Instantiate(_generatedObject, gameObject.transform.position, Quaternion.identity);
+        var enemy = Instantiate(_prefab, position.position, Quaternion.identity);
         enemy.gameObject.AddComponent<TargetFollower>().SetTarget(_target);
     }
 }
