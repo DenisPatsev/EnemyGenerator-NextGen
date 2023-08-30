@@ -9,11 +9,13 @@ public class TargetMotion : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
     private int _collisionCount;
+    private int _countDivider;
 
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collisionCount = 0;
+        _countDivider = 2;
     }
 
     private void Update()
@@ -29,7 +31,7 @@ public class TargetMotion : MonoBehaviour
             _collisionCount++;
             _speed *= -1;
 
-            if (_collisionCount % 2 == 0)
+            if (_collisionCount % _countDivider == 0)
             {
                 _spriteRenderer.flipX = false;
             }
